@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Register{% endblock %}
+
+{% block body %}
+<div class='container-fluid'>
+    <div class='row'>
+        <div class="col-4 mt-4 offset-4 container-reg-con">
+            <h1 class='text-center'>Inscription</h1>
+
+            {{ form_errors(registrationForm) }}
+
+            {{ form_start(registrationForm) }}
+                {{ form_row(registrationForm.email, {
+                    label: "Email",
+                    attr: {
+                        placeholder: "Votre email"
+                    }
+                }) }}
+                {{ form_row(registrationForm.plainPassword, {
+                    label: 'Votre mot de passe',
+                    attr: {
+                        placeholder: "Votre mot de passe"
+                    }
+                }) }}
+                {# {{ form_row(registrationForm.agreeTerms) }} #}
+
+                <div class="d-grid gap-2">
+                    <button type="submit" class="btn btn-primary" type="button">Inscrire</button>
+                </div>
+            {{ form_end(registrationForm) }}
+        </div>
+    </div>
+</div>
+
+{% endblock %}
