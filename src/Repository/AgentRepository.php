@@ -40,4 +40,19 @@ class AgentRepository extends ServiceEntityRepository
     //            ->getOneOrNullResult()
     //        ;
     //    }
+
+    public function getDiplomeCounts(): array
+    {
+        $entityManager = $this->getEntityManager();
+
+        // Requête DQL pour regrouper par diplome et compter les occurrences
+        $query = $entityManager->createQuery(
+            'SELECT a.diplome AS diplome, COUNT(a.id) AS count
+             FROM App\Entity\Agent a
+             GROUP BY a.diplome
+             ORDER BY count DESC'
+        );
+
+        return $query->getResult();
+    }
 }

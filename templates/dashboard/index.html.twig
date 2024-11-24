@@ -2,6 +2,89 @@
 
 {% block title %}Hello DashboardController!{% endblock %}
 
+{% block javascript %}
+    <!-- Vendor JS Files -->
+{% endblock %}
+
 {% block body %}
-contenu de tableau de bord
+<script src="{{asset('vendor/apexcharts/apexcharts.min.js')}}"></script>
+<h1>Tableau de bord</h1>
+
+{# les cards #}
+<div class="row">
+  <div class="col-4">
+    <div class="card" style="width: 18rem;">
+      <img src="{{ asset('img/fonction.png') }}" class="card-img-top img-fluid" style="max-height: 150px; object-fit: cover;" alt="...">
+
+      <div class="card-body">
+        <h1 class='text-primary'>50</h1>
+        <p class="card-text">Fonctions</p>
+      </div>
+    </div>
+  </div>
+  
+  <div class="col-4">
+    <div class="card" style="width: 18rem;">
+      <img src="{{ asset('img/agent.png') }}" class="card-img-top img-fluid" style="max-height: 150px; object-fit: cover;" alt="...">
+
+      <div class="card-body">
+      <h1 class='text-danger'>60</h1>
+        <p class="card-text">Agents</p>
+      </div>
+    </div>
+  </div>
+  
+  <div class="col-4">
+    <div class="card" style="width: 18rem;">
+      <img src="{{ asset('img/candidat.png') }}" class="card-img-top img-fluid" style="max-height: 150px; object-fit: cover;" alt="...">
+
+      <div class="card-body">
+      <h1 class='text-success'>50</h1>
+        <p class="card-text">Candidats</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-lg-12">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">Bar Chart</h5>
+
+        <!-- Bar Chart -->
+        <div id="barChart"></div>
+
+        <script>
+          document.addEventListener("DOMContentLoaded", () => {
+            new ApexCharts(document.querySelector("#barChart"), {
+              series: [{
+                data: {{ totals|json_encode|raw }}
+              }],
+              chart: {
+                type: 'bar',
+                height: 350
+              },
+              plotOptions: {
+                bar: {
+                  borderRadius: 4,
+                  horizontal: true,
+                }
+              },
+              dataLabels: {
+                enabled: false
+              },
+              xaxis: {
+                categories: {{ diplomes|json_encode|raw }},
+              }
+            }).render();
+          });
+        </script>
+        <!-- End Bar Chart -->
+
+      </div>
+    </div>
+  </div>
+</div>
+
 {% endblock %}

@@ -78,4 +78,32 @@ final class UserController extends AbstractController
 
         return $this->redirectToRoute('app_user_index', [], Response::HTTP_SEE_OTHER);
     }
+
+    #[Route('/{id}/modifier-role-drh', name:'app_user_role_drh', methods: ['POST'])]
+    public function editRoleDrh(Request $request, User $user, EntityManagerInterface $entityManager): Response
+    {
+
+        if ($this->isCsrfTokenValid('role'.$user->getId(), $request->getPayload()->getString('_token'))) {
+            // $entityManager->remove($user);
+            $user->setRoles(['ROLE_USER', 'ROLE_DRH']);
+            $entityManager->flush();
+        }
+
+        return $this->redirectToRoute('app_user_index', [], Response::HTTP_SEE_OTHER);
+
+    }
+    
+    #[Route('/{id}/modifier-role-personnel', name:'app_user_role_personnel', methods: ['POST'])]
+    public function editRolePersonnel(Request $request, User $user, EntityManagerInterface $entityManager): Response
+    {
+
+        if ($this->isCsrfTokenValid('role'.$user->getId(), $request->getPayload()->getString('_token'))) {
+            // $entityManager->remove($user);
+            $user->setRoles(['ROLE_USER']);
+            $entityManager->flush();
+        }
+
+        return $this->redirectToRoute('app_user_index', [], Response::HTTP_SEE_OTHER);
+
+    }
 }

@@ -55,7 +55,7 @@
 
                 <div class="nav-profile d-flex align-items-center pe-0">
                   <i class="fa-solid fa-user"></i>
-                  <span class="d-none d-md-block ps-2">Admin</span>
+                  <span class="d-none d-md-block ps-2">{{ app.user.fullName }}</span>
                 </div><!-- End Profile Iamge Icon -->
 
                 <a class="d-flex align-items-center justify-content-center text-center" href="{{ path('app_logout') }}">
@@ -75,42 +75,49 @@
           <ul class="sidebar-nav" id="sidebar-nav">
 
             <li class="nav-item">
-              <a class="nav-link " href="{{ path('app_dashboard') }}">
-                <i class="bi bi-grid"></i>
+              <a class="nav-link fw-bold {% if path('app_dashboard') in app.request.uri %} active {% endif %}" href="{{ path('app_dashboard') }}">
+                <i class="bi bi-grid-fill"></i>
                 <span>Tableau de bord</span>
               </a>
             </li>
-            
+
             <li class="nav-item">
-              <a class="navi-link" href="{{ path('app_job_index') }}">
-                <i class="bi bi-grid"></i>
+              <a class="nav-link fw-bold {% if path('app_job_index') in app.request.uri %} active {% endif %}" href="{{ path('app_job_index') }}">
+                <i class="bi bi-front"></i>
                 <span>Fonction</span>
               </a>
             </li>
+{#             
+            <li class="nav-item">
+              <a class="navi-link " href="{{ path('app_job_index') }}">
+                <i class="bi bi-grid"></i>
+                <span>Fonction</span>
+              </a>
+            </li> #}
             
             <li class="nav-item">
-              <a class="nav-link " href="{{ path('app_agent_index') }}">
+              <a class="nav-link fw-bold {% if path('app_agent_index') in app.request.uri %} active {% endif %}" href="{{ path('app_agent_index') }}">
                 <i class="bi bi-people-fill"></i>
                 <span>Agents</span>
               </a>
             </li>
             
             <li class="nav-item">
-              <a class="nav-link " href="{{ path('app_affectation_index') }}">
+              <a class="nav-link fw-bold {% if path('app_affectation_index') in app.request.uri %} active {% endif %}" href="{{ path('app_affectation_index') }}">
                 <i class="bi bi-pin-map-fill"></i>
                 <span>Affectation</span>
               </a>
             </li>
             
             <li class="nav-item">
-              <a class="nav-link " href="{{ path('app_candidat_index') }}">
+              <a class="nav-link fw-bold {% if path('app_candidat_index') in app.request.uri %} active {% endif %}" href="{{ path('app_candidat_index') }}">
                 <i class="bi bi-people"></i>
                 <span>Candidats</span>
               </a>
             </li>
             
             <li class="nav-item">
-              <a class="nav-link " href="{{ path('app_user_index') }}">
+              <a class="nav-link fw-bold {% if path('app_user_index') in app.request.uri %} active {% endif %}" href="{{ path('app_user_index') }}">
                 <i class="bi bi-people-fill"></i>
                 <span>Utilisateurs</span>
               </a>

@@ -3,13 +3,13 @@
 {% block title %}User index{% endblock %}
 
 {% block body %}
-    <h1>User index</h1>
+    <h1>Les utilisateurs</h1>
 
     <table class="table datatable">
         <thead>
             <tr>
                 <th>Id</th>
-                <th>FullName</th>
+                <th>Nom complet</th>
                 <th>Email</th>
                 <th>Roles</th>
                 <th>actions</th>
@@ -21,10 +21,15 @@
                 <td>{{ user.id }}</td>
                 <td>{{ user.fullName }}</td>
                 <td>{{ user.email }}</td>
-                <td>{{ user.roles ? user.roles|json_encode : '' }}</td>
+                {# <td>{{ user.roles ? user.roles|json_encode : '' }}</td> #}
+                {% if 'ROLE_DRH' in user.roles ? user.roles|json_encode : '' %}
+                    <td><span class="badge rounded-pill text-bg-primary">DRH</span></td>
+                {% else %}
+                    <td><span class="badge rounded-pill text-bg-success">Personnel</span></td>
+                {% endif %}
                 <td>
-                    <a href="{{ path('app_user_show', {'id': user.id}) }}">show</a>
-                    <a href="{{ path('app_user_edit', {'id': user.id}) }}">edit</a>
+                    <a href="{{ path('app_user_show', {'id': user.id}) }}">voir</a>
+                    {# <a href="{{ path('app_user_edit', {'id': user.id}) }}">edit</a> #}
                 </td>
             </tr>
         {% else %}
@@ -34,6 +39,4 @@
         {% endfor %}
         </tbody>
     </table>
-
-    <a href="{{ path('app_user_new') }}">Create new</a>
 {% endblock %}

@@ -1,0 +1,21 @@
+<!-- Modal -->
+<div class="modal fade" id="staticBackdropPersonnel" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5 text-primary" id="staticBackdrop"> </span> Modification de role </h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+        <form method="post" action="{{ path('app_user_role_personnel', {'id': user.id}) }}">
+            <div class="modal-body">
+                <p>Etes-vous sur ?</p>
+                    <input type="hidden" name="_token" value="{{ csrf_token('role' ~ user.id) }}">
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Non</button>
+                <button type="submit" class="btn btn-primary">Oui</button>
+            </div>
+        </form>
+    </div>
+  </div>
+</div>
