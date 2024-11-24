@@ -1,0 +1,18 @@
+{% extends 'admin/admin.html.twig' %}
+
+{% block title %}Edit Candidat{% endblock %}
+
+{% block body %}
+    <h1>Validation d'un candidat</h1>
+
+    <a href="{{ path('app_candidat_show', {'id': candidat.id}) }}">Voir le candidat</a> <br>
+    <a href="{{ path('app_candidat_index') }}">Retour a la liste</a> <br><br>
+    {# INFORMATION #}
+    <div>
+
+    </div>
+
+    {{ include('candidat/_validate_form.html.twig') }}
+
+
+{% endblock %}

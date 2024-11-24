@@ -1,0 +1,12 @@
+{% extends 'admin/admin.html.twig' %}
+
+{% block title %}New Affectation{% endblock %}
+
+{% block body %}
+    <h1>Nouvelle affectation</h1>
+
+    <a href="{{ path('app_affectation_index') }}">Retour a la liste</a>
+
+    <br><br>
+    {{ include('affectation/_form.html.twig') }}
+{% endblock %}

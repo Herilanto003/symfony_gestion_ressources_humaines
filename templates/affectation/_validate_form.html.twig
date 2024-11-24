@@ -1,0 +1,21 @@
+<!-- Modal -->
+<div class="modal fade" id="staticBackdropValidate" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5 text-success" id="staticBackdropLabel"> <span><i class="bi bi-check2-circle"></i></span> Validation</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+        <form method="post" action="{{ path('app_affectation_validate', {'id': affectation.id}) }}">
+            <div class="modal-body">
+                <p>Etes-vous sur de vouloir le valider ?</p>
+                <input type="hidden" name="_token" value="{{ csrf_token('validate' ~ affectation.id) }}">
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Non</button>
+                <button type="submit" class="btn btn-primary">Oui</button>
+            </div>
+        </form>
+    </div>
+  </div>
+</div>

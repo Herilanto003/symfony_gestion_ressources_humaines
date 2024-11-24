@@ -1,0 +1,45 @@
+{% extends 'admin/admin.html.twig' %}
+
+{% block title %}Affectation index{% endblock %}
+
+{% block body %}
+    <div class="d-flex justify-content-between align-items-center">
+        <h1>Les demandes d'affectation</h1>
+        <a href="{{ path('app_affectation_new') }}" class="btn btn-sm btn-primary">Nouveau</a>
+    </div>
+
+    <table class="table datatable">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Immatricule</th>
+                <th>Nom demandeur</th>
+                <th>Prenom demandeur</th>
+                <th>Lieu</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for affectation in affectations %}
+            <tr>
+                <td>{{ affectation.id }}</td>
+                <td>{{ affectation.agent.imatricule }}</td>
+                <td>{{ affectation.agent.lastname }}</td>
+                <td>{{ affectation.agent.firstname }}</td>
+                <td>{{ affectation.place }}</td>
+                <td>
+
+                    <a href="{{ path('app_affectation_show', {'id': affectation.id}) }}" class="btn btn-info">
+                        <i class="bi bi-eye-fill"></i>
+                    </a>
+                    <a href="{{ path('app_affectation_edit', {'id': affectation.id}) }}" class="btn btn-primary"><i class="bi bi-pen-fill"></i></a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="4">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

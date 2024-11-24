@@ -1,0 +1,59 @@
+{% extends 'admin/admin.html.twig' %}
+
+{% block title %}Affectation{% endblock %}
+
+{% block body %}
+    <h1>Affectation</h1>   
+    <div class="mb-3">
+        <a href="{{ path('app_affectation_index') }}">Retour a la liste</a>
+
+        <a href="{{ path('app_affectation_edit', {'id': affectation.id}) }}" class="btn btn-sm btn-success ms-3">Modifier</a>
+
+        <button type="button" class="btn btn-sm btn-danger ms-3"  data-bs-toggle="modal" data-bs-target="#staticBackdrop">Supprimer</button>
+        <button type="button" class="btn btn-sm btn-success ms-3"  data-bs-toggle="modal" data-bs-target="#staticBackdropValidate">Valider</button>
+
+        {{ include('affectation/_delete_form.html.twig') }}
+        {{ include('affectation/_validate_form.html.twig') }}
+    </div>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id Affectation</th>
+                <td>{{ affectation.id }}</td>
+            </tr>
+            <tr>
+                <th>Immatricule demandeur</th>
+                <td>{{ affectation.agent.imatricule }}</td>
+            </tr>
+            <tr>
+                <th>Nom demandeur</th>
+                <td>{{ affectation.agent.lastname }}</td>
+            </tr>
+            <tr>
+                <th>Prenom demandeur</th>
+                <td>{{ affectation.agent.firstname }}</td>
+            </tr>
+            <tr>
+                <th>CIN</th>
+                <td>{{ affectation.agent.cin }}</td>
+            </tr>
+            <tr>
+                <th>Numero telephone</th>
+                <td>{{ affectation.agent.phone }}</td>
+            </tr>
+            <tr>
+                <th>Fonction actuelle</th>
+                <td>{{ affectation.agent.job.title }}</td>
+            </tr>
+            <tr>
+                <th>Cause</th>
+                <td>{{ affectation.cause }}</td>
+            </tr>
+            <tr>
+                <th>Lieu</th>
+                <td>{{ affectation.place }}</td>
+            </tr>
+        </tbody>
+    </table>
+{% endblock %}

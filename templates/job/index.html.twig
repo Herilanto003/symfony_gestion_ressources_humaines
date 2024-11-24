@@ -1,0 +1,41 @@
+{% extends 'admin/admin.html.twig' %}
+
+{% block title %}Job index{% endblock %}
+
+{% block body %}
+
+    <div class="d-flex justify-content-between align-items-center">
+        <h1>Les fonctions</h1>
+        <a href="{{ path('app_job_new') }}" class="btn btn-sm btn-primary">Nouvelle fonction</a>
+    </div>
+
+    <table class="table datatable">
+        <thead>
+            <tr>
+                <th>Identifiant</th>
+                <th>Nom de fonction</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for job in jobs %}
+            <tr>
+                <td>{{ job.id }}</td>
+                <td>{{ job.title }}</td>
+                <td>
+                    <a href="{{ path('app_job_show', {'id': job.id}) }}" class="btn btn-info">
+                        <i class="bi bi-eye-fill"></i>
+                    </a>
+                    <a href="{{ path('app_job_edit', {'id': job.id}) }}" class="btn btn-primary"><i class="bi bi-pen-fill"></i></a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="3">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    
+{% endblock %}

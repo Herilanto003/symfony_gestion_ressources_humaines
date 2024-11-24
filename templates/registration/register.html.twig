@@ -3,7 +3,7 @@
 {% block title %}Register{% endblock %}
 
 {% block body %}
-<div class='container-fluid'>
+{# <div class='container-fluid'>
     <div class='row'>
         <div class="col-4 mt-4 offset-4 container-reg-con">
             <h1 class='text-center'>Inscription</h1>
@@ -23,7 +23,7 @@
                         placeholder: "Votre mot de passe"
                     }
                 }) }}
-                {# {{ form_row(registrationForm.agreeTerms) }} #}
+                {{ form_row(registrationForm.agreeTerms) }}
 
                 <div class="d-grid gap-2">
                     <button type="submit" class="btn btn-primary" type="button">Inscrire</button>
@@ -31,6 +31,76 @@
             {{ form_end(registrationForm) }}
         </div>
     </div>
-</div>
+</div> #}
+
+  <main>
+    <div class="container">
+
+      <section class="section register min-vh-100 d-flex flex-column align-items-center justify-content-center py-4">
+        <div class="container">
+          <div class="row justify-content-center">
+            <div class="col-lg-4 col-md-6 d-flex flex-column align-items-center justify-content-center">
+
+              <div class="d-flex justify-content-center py-4">
+                <a href="index.html" class="logo d-flex align-items-center w-auto">
+                  <img src="{{asset('img/logo.png')}}" alt="">
+                  <span class="d-none d-lg-block">Fonction Public</span>
+                </a>
+              </div><!-- End Logo -->
+
+              <div class="card mb-3">
+
+                <div class="card-body">
+
+                  <div class="pt-4 pb-2">
+                    <h5 class="card-title text-center pb-0 fs-4">Creer un compte</h5>
+                  </div>
+
+                    {{ form_errors(registrationForm) }}
+
+                    {{ form_start(registrationForm) }}
+
+                        {{ form_row(registrationForm.fullName, {
+                            label: "Nom Complet",
+                            attr: {
+                                placeholder: "Votre nom complet"
+                            }
+                        }) }}
+
+                        {{ form_row(registrationForm.email, {
+                            label: "Email",
+                            attr: {
+                                placeholder: "Votre email"
+                            }
+                        }) }}
+
+                        {{ form_row(registrationForm.plainPassword, {
+                            label: 'Votre mot de passe',
+                            attr: {
+                                placeholder: "Votre mot de passe"
+                            }
+                        }) }}
+                        {# {{ form_row(registrationForm.agreeTerms) }} #}
+
+                        <div class="d-grid gap-2">
+                            <button type="submit" class="btn btn-primary" type="button">Inscrire</button>
+                        </div>
+                    {{ form_end(registrationForm) }}
+                    <div class="col-12">
+                        <p class="small mb-0">Vous avez deja un compte? <a href="{{ path("app_login") }}">Se connecter</a></p>
+                    </div>
+
+
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+      </section>
+
+    </div>
+</main>
 
 {% endblock %}

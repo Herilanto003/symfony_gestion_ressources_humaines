@@ -1,0 +1,12 @@
+{% extends 'admin/admin.html.twig' %}
+
+{% block title %}New Job{% endblock %}
+
+{% block body %}
+    <h1>Creer une nouvelle fonction</h1>
+
+    <a href="{{ path('app_job_index') }}">Retour a la liste</a>
+    <br><br>
+    {{ include('job/_form.html.twig') }}
+
+{% endblock %}

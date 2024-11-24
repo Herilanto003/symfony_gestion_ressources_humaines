@@ -1,0 +1,13 @@
+{% extends 'admin/admin.html.twig' %}
+
+{% block title %}Edit Agent{% endblock %}
+
+{% block body %}
+    <h1>Modification d'un agent</h1>
+
+    <a href="{{ path('app_agent_index') }}">Retour a la liste</a> <br><br>
+    {{ include('agent/_form.html.twig', {'button_label': 'Modifier'}) }}
+
+
+    {{ include('agent/_delete_form.html.twig') }}
+{% endblock %}

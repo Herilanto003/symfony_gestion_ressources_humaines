@@ -1,0 +1,32 @@
+{% extends 'admin/admin.html.twig' %}
+
+{% block title %}Job{% endblock %}
+
+{% block body %}
+
+    <h1>Fonction</h1>
+    <div class="mb-3">
+        <a href="{{ path('app_job_index') }}">Retour a la liste</a>
+
+        <a href="{{ path('app_job_edit', {'id': job.id}) }}" class="btn btn-sm btn-success ms-3">Modifier</a>
+
+        <button type="button" class="btn btn-sm btn-danger ms-3"  data-bs-toggle="modal" data-bs-target="#staticBackdrop">Supprimer</button>
+
+        {{ include('job/_delete_form.html.twig') }}
+    </div>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Identifiant</th>
+                <td>{{ job.id }}</td>
+            </tr>
+            <tr>
+                <th>Nom de fonction</th>
+                <td>{{ job.title }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+
+{% endblock %}

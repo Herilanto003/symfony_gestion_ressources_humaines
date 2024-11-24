@@ -1,0 +1,103 @@
+{% extends 'admin/admin.html.twig' %}
+
+{% block title %}Agent - gestion soutenance{% endblock %}
+
+{% block body %}
+    <h1>Fonctionnaire</h1>   
+    <div class="mb-3">
+        <a href="{{ path('app_agent_index') }}">Retour a la liste</a>
+
+        <a href="{{ path('app_agent_edit', {'id': agent.id}) }}" class="btn btn-sm btn-success ms-3">Modifier</a>
+
+        <button type="button" class="btn btn-sm btn-danger ms-3"  data-bs-toggle="modal" data-bs-target="#staticBackdrop">Supprimer</button>
+
+        {{ include('agent/_delete_form.html.twig') }}
+    </div>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ agent.id }}</td>
+            </tr>
+            <tr>
+                <th>Imatricule</th>
+                <td>{{ agent.imatricule }}</td>
+            </tr>
+            <tr>
+                <th>Nom</th>
+                <td>{{ agent.lastname }}</td>
+            </tr>
+            <tr>
+                <th>Prenom</th>
+                <td>{{ agent.firstname }}</td>
+            </tr>
+            <tr>
+                <th>Date de naissance</th>
+                <td>{{ agent.birthDate ? agent.birthDate|date('d/m/Y') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Lieu de naissance</th>
+                <td>{{ agent.birthPlace }}</td>
+            </tr>
+            <tr>
+                <th>Numero telephone</th>
+                <td>{{ agent.phone }}</td>
+            </tr>
+            <tr>
+                <th>Email</th>
+                <td>{{ agent.email }}</td>
+            </tr>
+            <tr>
+                <th>Categorie</th>
+                <td>{{ agent.category }}</td>
+            </tr>
+            <tr>
+                <th>Corps</th>
+                <td>{{ agent.grade }}</td>
+            </tr>
+            <tr>
+                <th>Diplome</th>
+                <td>{{ agent.diplome }}</td>
+            </tr>
+            <tr>
+                <th>Specialisation</th>
+                <td>{{ agent.specialisation }}</td>
+            </tr>
+            <tr>
+                <th>Service</th>
+                <td>{{ agent.service }}</td>
+            </tr>
+            <tr>
+                <th>Ministere</th>
+                <td>{{ agent.ministere }}</td>
+            </tr>
+            <tr>
+                <th>Direction</th>
+                <td>{{ agent.direction }}</td>
+            </tr>
+            <tr>
+                <th>Situation</th>
+                <td>{{ agent.situation }}</td>
+            </tr>
+            <tr>
+                <th>Cin</th>
+                <td>{{ agent.cin }}</td>
+            </tr>
+            <tr>
+                <th>Genre</th>
+                <td>{{ agent.genre }}</td>
+            </tr>
+            <tr>
+                <th>Fonction Actuelle</th>
+                <td>{{ agent.job.title }}</td>
+            </tr>
+            <tr>
+                <th>Lieu Actuel</th>
+                <td>{{ agent.place }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    {{ include('agent/_delete_form.html.twig') }}
+{% endblock %}

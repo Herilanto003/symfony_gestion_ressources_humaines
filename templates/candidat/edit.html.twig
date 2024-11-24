@@ -1,0 +1,12 @@
+{% extends 'admin/admin.html.twig' %}
+
+{% block title %}Edit Candidat{% endblock %}
+
+{% block body %}
+    <h1>Modification d'un candidat</h1>
+
+    <a href="{{ path('app_candidat_index') }}">Retour a la liste</a> <br><br>
+    {{ include('candidat/_form.html.twig', {'button_label': 'Modifier'}) }}
+
+
+{% endblock %}
