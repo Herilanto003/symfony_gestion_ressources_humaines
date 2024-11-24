@@ -11,7 +11,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 
-#[Route('/agent')]
+#[Route('/compte/agent')]
 final class AgentController extends AbstractController
 {
     #[Route(name: 'app_agent_index', methods: ['GET'])]
@@ -22,7 +22,7 @@ final class AgentController extends AbstractController
         ]);
     }
 
-    #[Route('/new', name: 'app_agent_new', methods: ['GET', 'POST'])]
+    #[Route('/nouveau', name: 'app_agent_new', methods: ['GET', 'POST'])]
     public function new(Request $request, EntityManagerInterface $entityManager): Response
     {
         $agent = new Agent();
@@ -50,7 +50,7 @@ final class AgentController extends AbstractController
         ]);
     }
 
-    #[Route('/{id}/edit', name: 'app_agent_edit', methods: ['GET', 'POST'])]
+    #[Route('/{id}/modifier', name: 'app_agent_edit', methods: ['GET', 'POST'])]
     public function edit(Request $request, Agent $agent, EntityManagerInterface $entityManager): Response
     {
         $form = $this->createForm(AgentType::class, $agent);

@@ -10,8 +10,10 @@
         <a href="{{ path('app_affectation_edit', {'id': affectation.id}) }}" class="btn btn-sm btn-success ms-3">Modifier</a>
 
         <button type="button" class="btn btn-sm btn-danger ms-3"  data-bs-toggle="modal" data-bs-target="#staticBackdrop">Supprimer</button>
-        <button type="button" class="btn btn-sm btn-success ms-3"  data-bs-toggle="modal" data-bs-target="#staticBackdropValidate">Valider</button>
-
+        
+        {% if 'ROLE_DRH' in app.user.roles ? app.user.roles|json_encode : '' %}
+            <button type="button" class="btn btn-sm btn-success ms-3"  data-bs-toggle="modal" data-bs-target="#staticBackdropValidate">Valider</button>
+        {% endif %}
         {{ include('affectation/_delete_form.html.twig') }}
         {{ include('affectation/_validate_form.html.twig') }}
     </div>

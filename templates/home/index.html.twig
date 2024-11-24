@@ -1,9 +1,52 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello HomeController!{% endblock %}
+{% block title %}Accueil{% endblock %}
 
 {% block body %}
-<div>
-    <h1>Page d'accueil</h1>
-</div>
+    <!-- Hero Section -->
+    <section id="hero" class="hero section">
+
+      <div class="container" data-aos="fade-up" data-aos-delay="100">
+
+        <div class="row align-items-center">
+          <div class="col-lg-6">
+            <div class="hero-content" data-aos="fade-up" data-aos-delay="200">
+
+              <h1 class="mb-4">
+                Fonction
+                Public <br>
+                <span class="accent-text">Bienvenue</span>
+              </h1>
+
+              <p class="mb-4 mb-md-5">
+                {% if app.user %}
+                    Bonjour, {{ app.user.fullName }}
+                {% else %}
+                    Vous n' etes pas connecte
+                {% endif %}
+              </p>
+
+              <div class="hero-buttons">
+                {% if app.user %}
+                    <a href="{{ path('app_dashboard') }}" class="btn btn-primary me-0 me-sm-2 mx-1">Tableau de bord</a>
+                    <a href="{{ path('app_logout') }}" class="btn btn-danger me-0 me-sm-2 mx-1">Deconnexion</a>
+                {% else %}
+                    <a href="{{ path('app_login') }}" class="btn btn-primary me-0 me-sm-2 mx-1">Connexion</a>
+                {% endif %}
+                
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-6">
+            <div class="hero-image" data-aos="zoom-out" data-aos-delay="300">
+              <img src="{{asset('img/illustration-1.webp')}}" alt="Hero Image" class="img-fluid">
+            </div>
+          </div>
+        </div>
+
+
+      </div>
+
+    </section><!-- /Hero Section -->
 {% endblock %}

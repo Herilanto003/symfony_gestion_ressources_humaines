@@ -55,4 +55,19 @@ class AgentRepository extends ServiceEntityRepository
 
         return $query->getResult();
     }
+
+    public function getTotalAgents(): int
+    {
+        $entityManager = $this->getEntityManager();
+
+        // Requête DQL pour compter le nombre total d'agents
+        $query = $entityManager->createQuery(
+            'SELECT COUNT(a.id)
+            FROM App\Entity\Agent a'
+        );
+
+        // Retourner le résultat du comptage
+        return (int) $query->getSingleScalarResult();
+    }
+
 }

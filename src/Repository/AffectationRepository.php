@@ -40,4 +40,18 @@ class AffectationRepository extends ServiceEntityRepository
     //            ->getOneOrNullResult()
     //        ;
     //    }
+
+    public function getTotalAffectations(): int
+    {
+        $entityManager = $this->getEntityManager();
+
+        // Requête DQL pour compter le nombre total d'affectations
+        $query = $entityManager->createQuery(
+            'SELECT COUNT(a.id)
+            FROM App\Entity\Affectation a'
+        );
+
+        // Retourner le résultat du comptage
+        return (int) $query->getSingleScalarResult();
+    }
 }

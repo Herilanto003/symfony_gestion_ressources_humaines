@@ -40,4 +40,18 @@ class JobRepository extends ServiceEntityRepository
     //            ->getOneOrNullResult()
     //        ;
     //    }
+
+    public function getTotalJobs(): int
+    {
+        $entityManager = $this->getEntityManager();
+
+        // Requête DQL pour compter le nombre total d'jobs
+        $query = $entityManager->createQuery(
+            'SELECT COUNT(j.id)
+            FROM App\Entity\Job j'
+        );
+
+        // Retourner le résultat du comptage
+        return (int) $query->getSingleScalarResult();
+    }
 }

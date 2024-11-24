@@ -115,13 +115,16 @@
                 <span>Candidats</span>
               </a>
             </li>
+
+            {% if 'ROLE_ADMIN' in app.user.roles ? app.user.roles|json_encode : '' %}
+                <li class="nav-item">
+                  <a class="nav-link fw-bold {% if path('app_user_index') in app.request.uri %} active {% endif %}" href="{{ path('app_user_index') }}">
+                    <i class="bi bi-people-fill"></i>
+                    <span>Utilisateurs</span>
+                  </a>
+                </li>
+            {% endif %}
             
-            <li class="nav-item">
-              <a class="nav-link fw-bold {% if path('app_user_index') in app.request.uri %} active {% endif %}" href="{{ path('app_user_index') }}">
-                <i class="bi bi-people-fill"></i>
-                <span>Utilisateurs</span>
-              </a>
-            </li>
 
           </ul>
 

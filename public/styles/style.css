@@ -5,3 +5,15 @@
   padding: 15px;
   /* box-shadow: 5px 5px 20px black; */
 }
+
+/* home page
+.section-home {
+  background-image: url('../img/home.png');
+  background-reapet: no-reapet;
+  background-size: cover;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+} */
